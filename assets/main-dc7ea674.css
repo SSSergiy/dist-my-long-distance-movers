@@ -2891,6 +2891,20 @@ textarea.input {
     gap: 20px;
   }
 }
+@media (360px <= width <= 1101px) {
+  .choises__saidbar-cards .choises__saidbar-card-editorial .choises__editorial-item {
+    gap: 9px;
+  }
+  .choises__saidbar-cards .choises__saidbar-card-forvard {
+    padding: 12px;
+  }
+  .analysis .pros {
+    width: 100%;
+  }
+  .overview .choises__saidbar-cards {
+    width: 22%;
+  }
+}
 @media (360px <= width <= 1280px) {
   .footer .footer__container .footer__info-description {
     max-width: 100%;
@@ -3096,9 +3110,6 @@ textarea.input {
        -moz-box-direction: normal;
             flex-direction: column;
     margin-bottom: 2.5rem;
-  }
-  .analysis .pros {
-    width: 100%;
   }
   .analysis .pros h5 {
     padding-top: 10px;
