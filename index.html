@@ -4,23 +4,9 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- <link rel="apple-touch-icon" sizes="180x180"
-        href="https://www.mylongdistancemovers.com/wp-content/themes/mldm/img/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32"
-        href="https://www.mylongdistancemovers.com/wp-content/themes/mldm/img/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16"
-        href="https://www.mylongdistancemovers.com/wp-content/themes/mldm/img/favicon/favicon-16x16.png">
-    <link rel="manifest"
-        href="https://www.mylongdistancemovers.com/wp-content/themes/mldm/img/favicon/site.webmanifest">
-    <link rel="mask-icon"
-        href="https://www.mylongdistancemovers.com/wp-content/themes/mldm/img/favicon/safari-pinned-tab.svg"
-        color="#666F86">
-    <link rel="shortcut icon"
-        href="https://www.mylongdistancemovers.com/wp-content/themes/mldm/img/favicon/favicon.ico"> -->
     <title>Simple</title>
-
-    <script type="module" crossorigin src="./assets/main-6368c3f6.js"></script>
-    <link rel="stylesheet" href="./assets/main-b8bfd55c.css">
+    <script type="module" crossorigin src="./assets/main-47c8c39e.js"></script>
+    <link rel="stylesheet" href="./assets/main-d54bd750.css">
 
 </head>
 
@@ -471,11 +457,13 @@
                             <span class="step-two__text">Giving us a time frame helps us find the best moving solution
                                 for
                                 your needs</span>
-                            <span class="picker-wrapper">
-                                <input id="picer" readonly type="text" class="data-datepicker" placeholder="MM/DD/YYYY"
-                                    data-datepicker>
-                            </span>
-                            <div id="step-three-btn" class="step-two__btn">continue<span
+                            <div class="picer-icons-block">
+                                <input id="pickerID" placeholder="MM/DD/YYYY"
+                                    class="width-block flatpickr flatpickr-input" type="text" readonly="readonly">
+                            </div>
+
+
+                            <div id="step-three-btn" class="step-two__btn invalid-btn">continue<span
                                     class="_icon-big-arrow-right"></span>
                             </div>
                             <span class="step-two__description"><svg xmlns="http://www.w3.org/2000/svg" width="50"
@@ -505,7 +493,7 @@
                             <span class="sub-info">Preparing to send your estimate</span>
                             <div class="step-two__progres-block step-fourth__progres-block">
                                 <span
-                                    class="step-two__progres-percent step-fourth__progres-percent"><span>60%</span></span>
+                                    class="step-two__progres-percent step-fourth__progres-percent"><span>90%</span></span>
                                 <span class="step-two__quotes step-fourth__quotes"><svg
                                         xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"
                                         fill="none">
@@ -556,7 +544,7 @@
                         </div>
                         <div id="step-fifth" class="step-two steps step-fifth" hidden>
                             <div class="step-two__progres-block step-fourth__progres-block step-fifes">
-                                <span class="step-two__quotes step-fourth__quotes "><svg
+                                <span class="step-two__quotes step-fourth__quotes step-fifthh"><svg
                                         xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"
                                         fill="none">
                                         <path fill-rule="evenodd" clip-rule="evenodd"
@@ -626,175 +614,6 @@
                                 thank you
                             </div>
                         </div>
-
-
-
-
-
-                        <!-- <div id="step-one" class="step-block-one step-block">
-                            <h3 class="form-calculator__title">Moving Cost Calculator</h3>
-                            <label class="form-calculator__zipe-code" for="zipe-code">
-                                <span>Where Are Your Moving From?</span>
-                                <span class="input-zip-error">
-                                    <img src="./src/img/error-zip.svg" alt="img">
-                                    <span>Zip Code
-                                        should contain 5
-                                        digits</span>
-                                </span>
-                                <input class=" " type="text" id="zipe-code" name="name" placeholder="Moving From Zip Code"
-                                    required>
-                            </label>
-                            <div id="btn-step-one" class="btn-zipe-code call-component-btn disable-click">
-                                <span>estimate my moving</span>
-                                <span class="_icon-big-arrow-right"></span>
-                            </div>
-                            <span class="requested-text">1, 765 people requested an estimate!</span>
-                        </div> -->
-                        <!-- <div id="step-two" class="step-block-two step-block" hidden>
-                            <h3 class="form-calculator__title">Moving Cost Calculator</h3>
-                            <div class="step-block__items">
-                                <h4>Where Are Your Moving To?</h4>
-                                <div class="selects-block">
-                                    <select name="form[]" data-class-modif="form">
-                                        <option value="1" selected>Select State1</option>
-                                        <option value="2">Absarokee, MT</option>
-                                        <option value="3">Acton, MT</option>
-                                        <option value="4">Ashland, MT</option>
-                                        <option value="5">Ballantine, MT</option>
-                                        <option value="6">Ballantine, MT</option>
-                                        <option value="7">Ballantine, MT</option>
-                                        <option value="8">Ballantine, MT</option>
-                                        <option value="9">Ballantine, MT</option>
-                                        <option value="10">Ballantine, MT</option>
-                                        <option value="11">Ballantine, MT</option>
-                                        <option value="12">Ballantine, MT</option>
-                                        <option value="13">Ballantine, MT</option>
-                                        <option value="14">Ballantine, MT</option>
-                                    </select>
-                                    <select name="form[]" data-class-modif="form">
-                                        <option value="1" selected>Select City</option>
-                                        <option value="2">Absarokee, MT</option>
-                                        <option value="3">Acton, MT</option>
-                                        <option value="4">Ashland, MT</option>
-                                        <option value="5">Ballantine, MT</option>
-                                        <option value="6">Ballantine, MT</option>
-                                        <option value="7">Ballantine, MT</option>
-                                        <option value="8">Ballantine, MT</option>
-                                        <option value="9">Ballantine, MT</option>
-                                        <option value="10">Ballantine, MT</option>
-                                        <option value="11">Ballantine, MT</option>
-                                        <option value="12">Ballantine, MT</option>
-                                        <option value="13">Ballantine, MT</option>
-                                        <option value="14">Ballantine, MT</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div id="btn-step-two" class="btn-zipe-code call-component-btn  disable-click">
-                                <span>estimate my moving</span>
-                                <span class="_icon-big-arrow-right"></span>
-                            </div>
-                            <span class="requested-text">1, 765 people requested an estimate!</span>
-                        </div> -->
-                        <!-- <div id="step-three" class="step-block-three step-block" hidden>
-                            <h3 class="form-calculator__title">Moving Cost Calculator</h3>
-                            <div class="step-block__items">
-                                <div class="selects-block">
-                                    <div class="selects-block__item">
-                                        <h4>When is Your Move?</h4>
-                                        <input id="picer" readonly type="text" class="data-datepicker select__title "
-                                            placeholder="select a date" data-datepicker>
-                                    </div>
-                                    <div class="selects-block__item">
-                                        <h4>How Large is Your Move?</h4>
-                                        <select name="form[]" data-class-modif="form">
-                                            <option value="1" selected>Select Home Size</option>
-                                            <option value="2">1 Bedroom Apartment</option>
-                                            <option value="3">1 Bedroom House</option>
-                                            <option value="4">2 Bedrooms Apartment</option>
-                                            <option value="5">2 Bedrooms House</option>
-                                            <option value="6">3 Bedrooms Apartment</option>
-                                            <option value="7">3 Bedrooms House</option>
-                                            <option value="8">4 Bedrooms Apartment</option>
-                                            <option value="9">4 Bedrooms House</option>
-                                            <option value="19">4 Bedrooms +</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <div id="btn-step-three"
-                                class="btn-zipe-code call-component-btn btn-zipe-code-ok disable-click ">
-                                <span>estimate my moving</span>
-                                <span class="_icon-big-arrow-right"></span>
-                            </div>
-                            <span class="requested-text">1, 765 people requested an estimate!</span>
-                        </div> -->
-                        <!-- <div id="step-four" hidden>
-                            <div class="step-block-four step-block">
-                                <h3 class="form-calculator__title">Moving Cost Calculator</h3>
-                                <h4>SEARCHING FOR MOVERS…</h4>
-                                <img src="./src/img/car-loading.gif" alt="img">
-                            </div>
-                        </div> -->
-                        <!-- <div id="step-fifth" hidden>
-                            <div class="step-block-fifth step-block">
-                                <h3 class="form-calculator__title">Enter your information</h3>
-                                <h4>Almost done! Enter your information to view your quote.</h4>
-                                <label class="form-calculator__zipe-code" for="name-code">
-                                    <span class="input-zip-error name-code-error" hidden>
-                                        <img src="./src/img/error-zip.svg" alt="img">
-                                        <span>Name Code
-                                            is wrong</span>
-                                    </span>
-                                    <input class="input-not-ok " type="text" id="name-code" name="name"
-                                        placeholder="Enter your Name" required>
-                                </label>
-                                <label class="form-calculator__zipe-code" for="phone-code">
-                                    <span class="input-zip-error phone-code-error" hidden>
-                                        <img src="./src/img/error-zip.svg" alt="img">
-                                        <span>Mobile Code
-                                            is wrong</span>
-                                    </span>
-                                    <input class="input-not-ok " type="text" id="phone-code" name="name"
-                                        placeholder="Enter your Mobile" required>
-                                </label>
-                                <label class="form-calculator__zipe-code" for="mail-code">
-                                    <span class="input-zip-error mail-code-error" hidden>
-                                        <img src="./src/img/error-zip.svg" alt="img">
-                                        <span>Email Code
-                                            is wrong</span>
-                                    </span>
-                                    <input class="input-not-ok " type="text" id="mail-code" name="name"
-                                        placeholder="Enter your Email" required>
-                                </label>
-                                <div id="btn-step-fifth"
-                                    class="btn-zipe-code call-component-btn btn-zipe-code-ok disable-click">
-                                    <span class="btn-next">NEXT</span>
-                                    <span class="btn-ok" hidden>ESTIMATE MY MOVING</span>
-                                    <span class="_icon-big-arrow-right"></span>
-                                </div>
-                                <span class="requested-text">Your information is safe with us. By using this service, you
-                                    agree to receive email communications solely regarding your
-                                    relocation process</span>
-                            </div>
-                        </div> -->
-                        <!-- <div id="step-sixfh" hidden>
-                            <div class="step-block-sixfh step-block">
-                                <h3 class="form-calculator__title">Your Quotes are waiting for you!</h3>
-                                <p>My Long Distance Movers brings the movers directly to you! We’ll find the top moving
-                                    companies for your needs and have
-                                    them call you right away. Search no more. Just sit back and relax!</p>
-                                <span class="form__price">$1450 - $1850</span>
-                                <p>This is your estimated moving cost. Professional movers will contact you within business
-                                    day.</p>
-                                <div class="btn-zipe-code call-component-btn btn-zipe-code-ok">
-                                    <span class="btn-next">THANK YOU</span>
-                                    <span class="_icon-big-arrow-right"></span>
-                                </div>
-                                <span class="requested-text">Your information is safe with us. By using this service, you
-                                    agree to receive email communications solely regarding your
-                                    relocation process</span>
-                            </div>
-                        </div> -->
                     </form>
                 </div>
             </section>
@@ -1112,7 +931,12 @@
     <div id="popup" aria-hidden="true" class="popup">
         <div class="popup__wrapper">
             <div class="popup__content">
-                <!-- <button data-close type="button" class="popup__close">Закрити</button> -->
+                <button data-close type="button" id="clozer" class="popup__close"><svg
+                        xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10" fill="none">
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                            d="M9.15539 7.49185C9.37591 7.71224 9.49986 8.01121 9.49995 8.32299C9.50004 8.63477 9.37628 8.93382 9.15589 9.15435C8.93549 9.37488 8.63652 9.49882 8.32474 9.49891C8.01296 9.49901 7.71391 9.37524 7.49338 9.15485L5.00038 6.66085L2.50638 9.15485C2.39747 9.26436 2.26799 9.35126 2.12538 9.41057C1.98276 9.46987 1.82984 9.5004 1.67538 9.5004C1.52093 9.5004 1.36801 9.46987 1.22539 9.41057C1.08278 9.35126 0.953298 9.26436 0.844385 9.15485C0.623877 8.93431 0.5 8.63521 0.5 8.32335C0.5 8.01148 0.623877 7.71239 0.844385 7.49185L3.33738 4.99885L0.844385 2.50585C0.63714 2.28284 0.524455 1.98815 0.530029 1.68376C0.535603 1.37937 0.659003 1.08901 0.874274 0.873734C1.08954 0.658463 1.37991 0.535063 1.6843 0.529489C1.98869 0.523915 2.28338 0.6366 2.50638 0.843845L5.00038 3.33685L7.49338 0.843845C7.60251 0.734716 7.73207 0.648151 7.87465 0.589091C8.01723 0.530031 8.17005 0.499634 8.32439 0.499634C8.47872 0.499634 8.63154 0.530031 8.77412 0.589091C8.9167 0.648151 9.04626 0.734716 9.15539 0.843845C9.26451 0.952973 9.35108 1.08253 9.41014 1.22511C9.4692 1.36769 9.4996 1.52051 9.4996 1.67484C9.4996 1.82918 9.4692 1.982 9.41014 2.12458C9.35108 2.26716 9.26451 2.39672 9.15539 2.50585L6.66238 4.99885L9.15539 7.49185Z"
+                            fill="#41518B" />
+                    </svg></button>
                 <div class="popup__imgblock">
                     <div class="popup__text">
                     </div>
