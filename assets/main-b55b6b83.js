@@ -3271,6 +3271,7 @@ document.getElementById("step-two-btn").addEventListener("click", function() {
   console.log(stateForm);
   document.getElementById("step-two-input-svg-from").hidden = true;
   document.getElementById("step-two-input-svg-to").hidden = true;
+  document.getElementById("step-two-btn").classList.add("invalid-btn");
 });
 (function() {
   var picker = document.getElementById("pickerID");
@@ -3291,6 +3292,7 @@ document.getElementById("step-three-btn").addEventListener("click", () => {
   document.getElementById("pickerID").value = "";
   document.getElementById("step-three").hidden = true;
   document.getElementById("step-fourth").hidden = false;
+  document.getElementById("step-three-btn").classList.add("invalid-btn");
   console.log(stateForm);
 });
 function isValidEmail(email) {
@@ -3306,9 +3308,11 @@ mailCodeElement.addEventListener("input", function(e) {
   if (isValidEmail(inputValue)) {
     btnFourth.classList.remove("invalid-btn");
     btnFourth.classList.add("valid-btn");
+    document.getElementById("step-fourth-input-to-error").hidden = true;
   } else {
     btnFourth.classList.remove("valid-btn");
     btnFourth.classList.add("invalid-btn");
+    document.getElementById("step-fourth-input-to-error").hidden = false;
   }
 });
 function handleClick() {
@@ -3317,6 +3321,7 @@ function handleClick() {
   document.getElementById("step-fourth").hidden = true;
   document.getElementById("step-fifth").hidden = false;
   console.log(stateForm);
+  btnFourth.classList.add("invalid-btn");
 }
 btnFourth.addEventListener("click", handleClick);
 (function() {
@@ -3325,7 +3330,14 @@ btnFourth.addEventListener("click", handleClick);
     return nameRegex.test(name);
   }
   function isValidPhoneNumber(phoneNumber) {
-    return phoneNumber.length === 14;
+    var valid = /^\(\d\d\d\)\s\d\d\d-\d\d\d\d$/gm.test(phoneNumber);
+    if (valid) {
+      document.getElementById("step-fifth-input-phone-error").hidden = true;
+      return phoneNumber.length === 14;
+    } else {
+      document.getElementById("step-fifth-input-phone-error").hidden = false;
+      return null;
+    }
   }
   var nameCodeElement = document.getElementById("first-name");
   var nameCodeElementLast = document.getElementById("last-name");
@@ -3347,17 +3359,42 @@ btnFourth.addEventListener("click", handleClick);
     if (phoneNumber.length > 0) {
       var formattedNumber = "(" + phoneNumber.slice(0, 3) + ") " + phoneNumber.slice(3, 6) + "-" + phoneNumber.slice(6, 10);
       inputt.value = formattedNumber;
+      if (/^\(\d\d\d\)\s\d\d\d-\d\d\d\d$/gm.test(inputt.value) !== true) {
+        document.getElementById("step-fifth-input-phone-error").hidden = false;
+      } else {
+        document.getElementById("step-fifth-input-phone-error").hidden = true;
+      }
     }
   }
   function checked() {
     var isFirstNameValid = isValidName(nameCodeElement.value);
     var isLastNameValid = isValidName(nameCodeElementLast.value);
     var isPhoneNumberValid = isValidPhoneNumber(inputt.value);
+    var errorMessage = document.getElementById("step-fifth-input-first-name-error");
+    var errorMessagePhone = document.getElementById("step-fifth-input-phone-error");
     btnFifth.classList.remove("valid-btn");
     btnFifth.classList.add("invalid-btn");
+    errorMessage.hidden = true;
     if (isFirstNameValid && isLastNameValid && isPhoneNumberValid) {
       btnFifth.classList.remove("invalid-btn");
       btnFifth.classList.add("valid-btn");
+      errorMessage.hidden = true;
+      errorMessagePhone.hidden = true;
+    } else if (isFirstNameValid === false) {
+      errorMessage.hidden = false;
+    } else if (isLastNameValid) {
+      errorMessage.hidden = true;
+    } else if (isLastNameValid === false) {
+      errorMessage.hidden = false;
+    } else if (isLastNameValid) {
+      errorMessage.hidden = true;
+    } else if (isPhoneNumberValid === false) {
+      errorMessagePhone.hidden = false;
+    } else {
+      btnFifth.classList.remove("valid-btn");
+      btnFifth.classList.add("invalid-btn");
+      errorMessage.hidden = true;
+      errorMessagePhone.hidden = true;
     }
   }
   btnFifth.addEventListener("click", function() {
@@ -3399,7 +3436,7 @@ btnFourth.addEventListener("click", handleClick);
           myPopupText.appendChild(clonedImage);
           document.removeEventListener("click", outsidePopupClick);
           setTimeout(function() {
-            if (popup.classList.contains("popup_show")) {
+            if (popup.getAttribute("aria-hidden") === "true") {
               console.log("Класс присутствует");
               popupContent.addEventListener("click", function(event) {
                 event.stopPropagation();
@@ -3407,8 +3444,26 @@ btnFourth.addEventListener("click", handleClick);
               document.addEventListener("click", outsidePopupClick);
             } else {
               console.log("Класс отсутствует");
+              stateForm = {};
+              document.getElementById("first-name").value = "";
+              document.getElementById("last-name").value = "";
+              document.getElementById("phone-code").value = "";
+              document.getElementById("mail-code").value = "";
+              document.getElementById("pickerID").value = "";
+              document.getElementById("step-two-input-to-rezult").textContent = "";
+              document.getElementById("step-two-input-from-rezult").textContent = "";
+              document.getElementById("step-two-input-from").value = "";
+              document.getElementById("step-two-input-to").value = "";
+              document.getElementById("step-one").hidden = false;
+              document.getElementById("step-two").hidden = true;
+              document.getElementById("step-three").hidden = true;
+              document.getElementById("step-fourth").hidden = true;
+              document.getElementById("step-fifth").hidden = true;
+              document.getElementById("step-sixth").hidden = true;
+              document.getElementById("step-two-input-svg-from").hidden = true;
+              document.getElementById("step-two-input-svg-to").hidden = true;
             }
-          }, 400);
+          });
         }
       );
     }
@@ -3445,8 +3500,20 @@ flatpickr("#pickerID", {
   }
 });
 (function() {
-  var clozer = document.getElementById("clozer");
-  clozer.addEventListener("click", function() {
-    document.getElementById("popup").click();
-  });
+  var inputFromBlock = document.getElementById("step-two-input-from-block");
+  var inputFrom2 = document.getElementById("step-two-input-from");
+  var inputToBlock = document.getElementById("step-two-input-to-block");
+  var inputTo2 = document.getElementById("step-two-input-to");
+  if (inputFromBlock && inputFrom2) {
+    inputFromBlock.addEventListener("click", function() {
+      inputFrom2.focus();
+    });
+  }
+  if (inputToBlock && inputTo2) {
+    inputToBlock.addEventListener("click", function() {
+      inputTo2.focus();
+    });
+  } else {
+    console.log("Не удалось найти элементы с указанными идентификаторами.");
+  }
 })();

@@ -5,9 +5,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Simple</title>
-    <script type="module" crossorigin src="./assets/main-75d2cc3f.js"></script>
-    <link rel="stylesheet" href="./assets/main-d54bd750.css">
+    <link rel="stylesheet" href="./assets/main-5c3c91a4.css">
 </head>
+
 
 
 
@@ -516,6 +516,12 @@
                                 <input class="mail-code " type="text" id="mail-code" name="name"
                                     placeholder="Email Adress" required>
                             </label>
+                            <div id="step-fourth-input-to-error" class="error" hidden>Please enter a valid email
+                                address.
+                            </div>
+
+
+
                             <div id="step-fourth-btn" class="step-two__btn invalid-btn">continue<span
                                     class="_icon-big-arrow-right"></span>
                             </div>
@@ -555,7 +561,7 @@
                                         <path
                                             d="M15.4534 15.5585C16.2943 15.8213 16.1367 15.6636 16.3995 16.5046C16.6623 15.6636 16.5046 15.8213 17.3456 15.5585C16.5046 15.2957 16.6623 15.4534 16.3995 14.6124C16.1367 15.4534 16.2943 15.2957 15.4534 15.5585Z"
                                             fill="#FDA41B" />
-                                    </svg>Matches Found</span>
+                                    </svg>Quotes avaliable</span>
                             </div>
                             <span class="step-two__title"><span>Congratulations!</span></span>
                             <span class="step-two__title">Your personalized moving estimate is ready.<span> Secure it
@@ -568,15 +574,23 @@
                                     <input class="first-name" type="text" id="first-name" placeholder="First Name"
                                         required>
                                 </label>
+
                                 <label class="last-name-label" for="last-name">
                                     <input class="last-name" type="text" id="last-name" placeholder="Last Name"
                                         required>
                                 </label>
                             </div>
+                            <div id="step-fifth-input-first-name-error" class="error" hidden>the first name and last
+                                name field must not contain
+                                numbers.
+                            </div>
                             <label class="phone-code-label" for="phone-code">
                                 <input class="phone-code" type="text" id="phone-code" placeholder="Phone Number"
                                     required>
                             </label>
+                            <div id="step-fifth-input-phone-error" class="error" hidden>the phone number field must
+                                contain only numbers
+                            </div>
                             <div id="step-fifth-btn" class="step-two__btn invalid-btn">get your quote<span
                                     class="_icon-big-arrow-right"></span>
                             </div>
@@ -944,7 +958,7 @@
         </div>
     </div>
 
-
+    <script type="module" crossorigin src="./assets/main-b55b6b83.js"></script>
 </body>
 
 </html>

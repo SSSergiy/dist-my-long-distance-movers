@@ -1434,6 +1434,17 @@ h6 {
   font-family: "Poppins";
   font-size: 16px;
   font-weight: 400;
+  width: 220px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+     -moz-box-pack: center;
+          justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 .section-form .step-two__title {
   display: block;
@@ -1522,7 +1533,7 @@ h6 {
           align-items: center;
   margin-bottom: 10px;
   width: 90%;
-  padding: 0 20px;
+  padding: 1px 20px;
   border-radius: 10px;
   border: 1px solid #C6CBDC;
   background: #FFF;
@@ -1983,6 +1994,20 @@ h6 {
 }
 .section-form-block {
   margin-bottom: 89px;
+}
+#step-fourth-input-to-error {
+  padding-left: 0;
+  padding-top: 10px;
+}
+#step-fifth-input-first-name-error {
+  padding-left: 0;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+#step-fifth-input-phone-error {
+  padding-left: 0;
+  padding-top: 20px;
+  padding-bottom: 5px;
 }
 input[type=text],
 input[type=email],
@@ -4880,16 +4905,16 @@ body::after {
       font-size: calc(0.625rem + 0.375 * (100vw - 22.5rem) / 58.125);
     }
   }
-  @supports (width: clamp( 7.5rem , -6.7741935484rem  +  63.4408602151vw , 44.375rem )) {
+  @supports (width: clamp( 2.5rem , -11.5322580645rem  +  62.3655913978vw , 38.75rem )) {
     .step-fifes::before {
-      width: clamp( 7.5rem , -6.7741935484rem  +  63.4408602151vw , 44.375rem );
+      width: clamp( 2.5rem , -11.5322580645rem  +  62.3655913978vw , 38.75rem );
     }
   }
-  @supports not (width: clamp( 7.5rem , -6.7741935484rem  +  63.4408602151vw , 44.375rem )) {
+  @supports not (width: clamp( 2.5rem , -11.5322580645rem  +  62.3655913978vw , 38.75rem )) {
     .step-fifes::before {
-      width: -webkit-calc(7.5rem + 36.875 * (100vw - 22.5rem) / 58.125);
-      width: -moz-calc(7.5rem + 36.875 * (100vw - 22.5rem) / 58.125);
-      width: calc(7.5rem + 36.875 * (100vw - 22.5rem) / 58.125);
+      width: -webkit-calc(2.5rem + 36.25 * (100vw - 22.5rem) / 58.125);
+      width: -moz-calc(2.5rem + 36.25 * (100vw - 22.5rem) / 58.125);
+      width: calc(2.5rem + 36.25 * (100vw - 22.5rem) / 58.125);
     }
   }
   @supports (width: clamp( 4.1875rem , 2.7842741935rem  +  6.2365591398vw , 7.8125rem )) {
@@ -5560,6 +5585,11 @@ body::after {
     gap: 30px;
   }
 }
+@media (445px <= width <= 767px) {
+  .van-lines .choises__card-logo-container {
+    width: 100% !important;
+  }
+}
 @media (490px <= width <= 529px) {
   .distance-description-block__img {
     -webkit-transform: translate(-50%, -50%) scaleX(1);
@@ -5738,7 +5768,7 @@ body::after {
     font-size: 1rem;
   }
   .step-fifes::before {
-    width: 44.375rem;
+    width: 38.75rem;
   }
   .popup img {
     width: 7.8125rem;
@@ -6131,7 +6161,7 @@ body::after {
     font-size: 0.625rem;
   }
   .step-fifes::before {
-    width: 7.5rem;
+    width: 2.5rem;
   }
   .popup img {
     width: 4.1875rem;
