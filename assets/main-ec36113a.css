@@ -1640,9 +1640,8 @@ h6 {
   background: #FDA41B;
 }
 .section-form .invalid-btn {
-  pointer-events: none;
-  cursor: not-allowed;
   background: #FCD589;
+  cursor: pointer;
 }
 .section-form .step-fourth__quotes {
   color: #35B882;
@@ -1975,9 +1974,11 @@ h6 {
   cursor: pointer;
   background: #FDA41B;
 }
+#step-fifth-btn.valid-btn {
+  cursor: pointer;
+  background: #FDA41B;
+}
 .invalid-btn {
-  pointer-events: none;
-  cursor: not-allowed;
   background: #FCD589;
 }
 .popup__content {
@@ -2008,6 +2009,23 @@ h6 {
   padding-left: 0;
   padding-top: 20px;
   padding-bottom: 5px;
+}
+#step-three-input-from-error {
+  padding-left: 0;
+  padding-top: 20px;
+  padding-bottom: 5px;
+}
+#first-name.error-block {
+  border: 1px solid #EF4444;
+}
+#last-name.error-block {
+  border: 1px solid #EF4444;
+}
+#phone-code.error-block {
+  border: 1px solid #EF4444;
+}
+#mail-code.error-block {
+  border: 1px solid #EF4444;
 }
 input[type=text],
 input[type=email],
