@@ -2040,7 +2040,7 @@ textarea {
   width: 100%;
   display: block;
   padding: 0px 20px;
-  border: 1px solid #eee;
+  border: 1px solid #fff;
 }
 .input[placeholder]:not([data-placeholder-nohiden])::-webkit-input-placeholder {
   -webkit-transition: opacity 0.3s;
