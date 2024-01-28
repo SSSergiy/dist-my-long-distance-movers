@@ -3615,7 +3615,7 @@ btnFourth.addEventListener("click", handleClick);
       stateForm["PhoneNumber"] = inputt.value;
       inputt.value = "";
       document.getElementById("step-fifth").hidden = true;
-      window.location.href = "./dist-my-long-distance-movers/thank-you-page.html";
+      window.location.href = "./thank-you-page.html";
       console.log(stateForm);
     } else {
       firstLastError2.innerText = "the first name and last name field must not contain numbers.";
