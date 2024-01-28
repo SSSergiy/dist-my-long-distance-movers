@@ -206,7 +206,12 @@ h6 {
   cursor: pointer;
 }
 ._spoller-init .spollers__title::after {
-  content: url("../src/img/line.png");
+  content: "";
+  background-image: url("../src/img/line.png");
+  -webkit-background-size: contain;
+          background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
   position: absolute;
   right: 2px;
   top: 21px;
@@ -217,20 +222,26 @@ h6 {
      -moz-transform: translateY(-50%);
       -ms-transform: translateY(-50%);
           transform: translateY(-50%);
-  padding-bottom: 15px;
   position: absolute;
   -webkit-transition: -webkit-transform 0.5s ease 0s;
   transition: -webkit-transform 0.5s ease 0s;
   -moz-transition: transform 0.5s ease 0s, -moz-transform 0.5s ease 0s;
   transition: transform 0.5s ease 0s;
   transition: transform 0.5s ease 0s, -webkit-transform 0.5s ease 0s, -moz-transform 0.5s ease 0s;
+  height: 40px;
+  width: 40px;
 }
 ._spoller-init .spollers__title::before {
-  content: url("../src/img/line.png");
+  content: "";
   position: absolute;
   right: 0;
   top: 1px;
+  background-image: url("../src/img/line.png");
   background-color: #E6F1FE;
+  -webkit-background-size: contain;
+          background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
   height: 40px;
   width: 40px;
   border-radius: 10px;
@@ -255,16 +266,16 @@ h6 {
           transform: translateX(0%) rotate(-90deg);
 }
 ._spoller-init .spollers__title._spoller-active::before {
-  -webkit-transform: translate(0%, -15%) rotate(0deg);
-     -moz-transform: translate(0%, -15%) rotate(0deg);
-      -ms-transform: translate(0%, -15%) rotate(0deg);
-          transform: translate(0%, -15%) rotate(0deg);
+  -webkit-transform: translate(0%, 0%) rotate(0deg);
+     -moz-transform: translate(0%, 0%) rotate(0deg);
+      -ms-transform: translate(0%, 0%) rotate(0deg);
+          transform: translate(0%, 0%) rotate(0deg);
 }
 ._spoller-init .spollers__title._spoller-active::after {
-  -webkit-transform: translateX(10%) translateY(-54%) rotate(0deg);
-     -moz-transform: translateX(10%) translateY(-54%) rotate(0deg);
-      -ms-transform: translateX(10%) translateY(-54%) rotate(0deg);
-          transform: translateX(10%) translateY(-54%) rotate(0deg);
+  -webkit-transform: translateX(0%) translateY(-50%) rotate(0deg);
+     -moz-transform: translateX(0%) translateY(-50%) rotate(0deg);
+      -ms-transform: translateX(0%) translateY(-50%) rotate(0deg);
+          transform: translateX(0%) translateY(-50%) rotate(0deg);
 }
 .spollers__body {
   padding-left: 0;
@@ -4197,10 +4208,10 @@ body::after {
     gap: 25px;
   }
   ._spoller-init .spollers__title._spoller-active::after {
-    -webkit-transform: translateX(0%) translateY(-54%) rotate(-360deg);
-       -moz-transform: translateX(0%) translateY(-54%) rotate(-360deg);
-        -ms-transform: translateX(0%) translateY(-54%) rotate(-360deg);
-            transform: translateX(0%) translateY(-54%) rotate(-360deg);
+    -webkit-transform: translateX(0%) translateY(-50%) rotate(-360deg);
+       -moz-transform: translateX(0%) translateY(-50%) rotate(-360deg);
+        -ms-transform: translateX(0%) translateY(-50%) rotate(-360deg);
+            transform: translateX(0%) translateY(-50%) rotate(-360deg);
   }
   .spollers__body {
     line-height: 132%;
@@ -5634,10 +5645,10 @@ body::after {
 }
 @media (767px <= width <= 1440px) {
   ._spoller-init .spollers__title._spoller-active::after {
-    -webkit-transform: translateX(5%) translateY(-54%) rotate(0deg);
-       -moz-transform: translateX(5%) translateY(-54%) rotate(0deg);
-        -ms-transform: translateX(5%) translateY(-54%) rotate(0deg);
-            transform: translateX(5%) translateY(-54%) rotate(0deg);
+    -webkit-transform: translateX(0%) translateY(-50%) rotate(0deg);
+       -moz-transform: translateX(0%) translateY(-50%) rotate(0deg);
+        -ms-transform: translateX(0%) translateY(-50%) rotate(0deg);
+            transform: translateX(0%) translateY(-50%) rotate(0deg);
   }
 }
 @media (872px <= width <= 1000px) {
