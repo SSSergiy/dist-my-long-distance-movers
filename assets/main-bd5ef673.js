@@ -3100,7 +3100,8 @@ spollers();
 flatpickr("#pickerID", {
   dateFormat: "m/d/Y",
   showMonths: 2,
-  disableMobile: "true",
+  disableMobile: true,
+  appendTo: document.getElementById("picker-block"),
   onReady: function(selectedDates, dateStr, instance) {
     if (window.innerWidth <= 767) {
       instance.set("showMonths", 1);
@@ -3109,7 +3110,7 @@ flatpickr("#pickerID", {
 });
 var stateForm = {};
 var popupState = "";
-function handleAriaHiddenChange(mutationsList, observer2) {
+function handleAriaHiddenChange(mutationsList, observer) {
   for (const mutation of mutationsList) {
     if (mutation.type === "attributes" && mutation.attributeName === "aria-hidden") {
       var isHidden = document.getElementById("popup").getAttribute("aria-hidden") === "true";
@@ -3149,7 +3150,6 @@ function handleAriaHiddenChange(mutationsList, observer2) {
         document.getElementById("step-three").hidden = true;
         document.getElementById("step-fourth").hidden = true;
         document.getElementById("step-fifth").hidden = true;
-        document.getElementById("step-sixth").hidden = true;
         document.getElementById("step-two-input-svg-from").hidden = true;
         document.getElementById("step-two-input-svg-to").hidden = true;
         document.getElementById("title-popup-form").style.display = "block";
@@ -3164,8 +3164,13 @@ function handleAriaHiddenChange(mutationsList, observer2) {
     }
   }
 }
-const observer = new MutationObserver(handleAriaHiddenChange);
-observer.observe(document.getElementById("popup"), { attributes: true });
+(function() {
+  const popupElement = document.getElementById("popup");
+  if (popupElement) {
+    const observer = new MutationObserver(handleAriaHiddenChange);
+    observer.observe(popupElement, { attributes: true });
+  }
+})();
 (function() {
   function isElementInViewport(el) {
     var rect = el.getBoundingClientRect();
@@ -3462,13 +3467,16 @@ btnFourth.addEventListener("click", handleClick);
   var nameCodeElementLast = document.getElementById("last-name");
   var inputt = document.getElementById("phone-code");
   var btnFifth = document.getElementById("step-fifth-btn");
-  var btnSixth = document.getElementById("step-sixth");
   var lastLastError = document.getElementById("step-fifth-input-first-name-error");
   var firstLastError = document.getElementById("step-fifth-input-first-name-error");
   function formatPhoneNumber(event) {
-    if (inputt.value.length < 7) {
-      if (inputt.value === "1" || inputt.value === "0")
+    if (inputt.value.length < 5) {
+      if (inputt.value === "1" || inputt.value === "0") {
+        document.getElementById("phone-code").classList.add("error-block");
+        document.getElementById("step-fifth-input-phone-error").hidden = false;
+        document.getElementById("step-fifth-input-phone-error").innerText = "the first digit cannot be zero or one";
         inputt.value = "";
+      }
     }
     var phoneNumber = inputt.value.replace(/\D/g, "");
     if (phoneNumber.length > 0) {
@@ -3476,6 +3484,7 @@ btnFourth.addEventListener("click", handleClick);
       inputt.value = formattedNumber;
       var phoneInput = document.getElementById("phone-code");
       if (/[^0-9]/gm.test(event.target.value)) {
+        document.getElementById("step-fifth-input-phone-error").innerText = "the phone number field must contain only numbers";
         document.getElementById("step-fifth-input-phone-error").hidden = false;
         phoneInput.classList.add("error-block");
       } else {
@@ -3606,19 +3615,12 @@ btnFourth.addEventListener("click", handleClick);
       stateForm["PhoneNumber"] = inputt.value;
       inputt.value = "";
       document.getElementById("step-fifth").hidden = true;
-      document.getElementById("step-sixth").hidden = false;
+      window.location.href = "/thank-you-page.html";
       console.log(stateForm);
     } else {
       firstLastError2.innerText = "the first name and last name field must not contain numbers.";
       errorPhone.innerText = "the phone number field must contain only numbers";
     }
-  });
-  var secondElement = document.getElementById("popup");
-  btnSixth.addEventListener("click", function() {
-    stateForm = {};
-    document.getElementById("step-sixth").hidden = true;
-    document.getElementById("step-one").hidden = false;
-    secondElement.click();
   });
 })();
 (function() {
@@ -3664,7 +3666,6 @@ btnFourth.addEventListener("click", handleClick);
               document.getElementById("step-three").hidden = true;
               document.getElementById("step-fourth").hidden = true;
               document.getElementById("step-fifth").hidden = true;
-              document.getElementById("step-sixth").hidden = true;
               document.getElementById("step-two-input-svg-from").hidden = true;
               document.getElementById("step-two-input-svg-to").hidden = true;
             }
