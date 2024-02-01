@@ -1069,7 +1069,7 @@ h6 {
   display: -webkit-inline-flex;
   display: -moz-inline-box;
   display: inline-flex;
-  padding: 8px 55px 7px 34px;
+  padding: 8px 50px 7px 34px;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
      -moz-box-pack: center;
@@ -1103,7 +1103,7 @@ h6 {
   display: -webkit-inline-flex;
   display: -moz-inline-box;
   display: inline-flex;
-  padding: 8px 50px 7px 35px;
+  padding: 8px 50px 7px 27px;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
      -moz-box-pack: center;
@@ -3317,6 +3317,9 @@ body::after {
   right: 18px;
   top: 18px;
 }
+.popup__content button:focus {
+  outline-color: transparent;
+}
 .lock .popup__content {
   visibility: visible;
 }
@@ -4193,6 +4196,17 @@ body::after {
     min-width: 110px;
   }
 }
+@media (360px <= width <= 600px) {
+  .hero-view .hero-view-block__img {
+    height: 90%;
+  }
+  .hero-view .hero-view__container {
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+       -moz-box-pack: center;
+            justify-content: center;
+  }
+}
 @media (360px <= width <= 718px) {
   .footer .footer__container .footer__info {
     -webkit-flex-wrap: wrap;
@@ -4392,6 +4406,7 @@ body::after {
     max-height: 572px;
     height: 100%;
     min-height: 572px;
+    margin-bottom: 0;
   }
   .hero-view .hero-view__container {
     padding-top: 19px;

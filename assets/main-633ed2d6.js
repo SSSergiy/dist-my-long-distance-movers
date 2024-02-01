@@ -1,3 +1,4 @@
+var _a, _b, _c, _d;
 (function polyfill() {
   const relList = document.createElement("link").relList;
   if (relList && relList.supports && relList.supports("modulepreload")) {
@@ -455,7 +456,7 @@ class Popup {
     this.options.init ? this.initPopups() : null;
   }
   initPopups() {
-    this.popupLogging(`Прокинувся`);
+    this.popupLogging(`woke up`);
     this.eventsPopup();
   }
   eventsPopup() {
@@ -569,9 +570,9 @@ class Popup {
             popup: this
           }
         }));
-        this.popupLogging(`Відкрив попап`);
+        this.popupLogging(`opened popap`);
       } else
-        this.popupLogging(`Йой, такого попапу немає. Перевірте коректність введення. `);
+        this.popupLogging(`there is no such father, please check the correctness of the input`);
     }
   }
   close(selectorValue) {
@@ -612,7 +613,7 @@ class Popup {
     setTimeout(() => {
       this._focusTrap();
     }, 50);
-    this.popupLogging(`Закрив попап`);
+    this.popupLogging(`the popup closed`);
   }
   // Отримання хешу
   _getHash() {
@@ -657,7 +658,7 @@ class Popup {
   }
   // Функція виведення в консоль
   popupLogging(message) {
-    this.options.logging ? FLS(`[Попапос]: ${message}`) : null;
+    this.options.logging ? FLS(`[popup]: ${message}`) : null;
   }
 }
 new Popup({});
@@ -1170,8 +1171,8 @@ var formats = {
     return String(date.getFullYear()).substring(2);
   }
 };
-var createDateFormatter = function(_a) {
-  var _b = _a.config, config = _b === void 0 ? defaults : _b, _c = _a.l10n, l10n = _c === void 0 ? english : _c, _d = _a.isMobile, isMobile = _d === void 0 ? false : _d;
+var createDateFormatter = function(_a2) {
+  var _b2 = _a2.config, config = _b2 === void 0 ? defaults : _b2, _c2 = _a2.l10n, l10n = _c2 === void 0 ? english : _c2, _d2 = _a2.isMobile, isMobile = _d2 === void 0 ? false : _d2;
   return function(dateObj, frmt, overrideLocale) {
     var locale = overrideLocale || l10n;
     if (config.formatDate !== void 0 && !isMobile) {
@@ -1182,8 +1183,8 @@ var createDateFormatter = function(_a) {
     }).join("");
   };
 };
-var createDateParser = function(_a) {
-  var _b = _a.config, config = _b === void 0 ? defaults : _b, _c = _a.l10n, l10n = _c === void 0 ? english : _c;
+var createDateParser = function(_a2) {
+  var _b2 = _a2.config, config = _b2 === void 0 ? defaults : _b2, _c2 = _a2.l10n, l10n = _c2 === void 0 ? english : _c2;
   return function(date, givenFormat, timeless, customLocale) {
     if (date !== 0 && !date)
       return void 0;
@@ -1223,8 +1224,8 @@ var createDateParser = function(_a) {
             regexStr += ".";
         }
         parsedDate = !config || !config.noCalendar ? new Date((/* @__PURE__ */ new Date()).getFullYear(), 0, 1, 0, 0, 0, 0) : new Date((/* @__PURE__ */ new Date()).setHours(0, 0, 0, 0));
-        ops.forEach(function(_a2) {
-          var fn = _a2.fn, val = _a2.val;
+        ops.forEach(function(_a3) {
+          var fn = _a3.fn, val = _a3.val;
           return parsedDate = fn(parsedDate, val, locale) || parsedDate;
         });
         parsedDate = matched ? parsedDate : void 0;
@@ -1305,8 +1306,8 @@ if (typeof Object.assign !== "function") {
         });
       }
     };
-    for (var _a = 0, args_1 = args; _a < args_1.length; _a++) {
-      var source = args_1[_a];
+    for (var _a2 = 0, args_1 = args; _a2 < args_1.length; _a2++) {
+      var source = args_1[_a2];
       _loop_1(source);
     }
     return target;
@@ -1401,8 +1402,8 @@ function FlatpickrInstance(element, instanceConfig) {
     triggerEvent("onReady");
   }
   function getClosestActiveElement() {
-    var _a;
-    return ((_a = self.calendarContainer) === null || _a === void 0 ? void 0 : _a.getRootNode()).activeElement || document.activeElement;
+    var _a2;
+    return ((_a2 = self.calendarContainer) === null || _a2 === void 0 ? void 0 : _a2.getRootNode()).activeElement || document.activeElement;
   }
   function bindToInstance(fn) {
     return fn.bind(self);
@@ -1644,7 +1645,7 @@ function FlatpickrInstance(element, instanceConfig) {
       fragment.appendChild(buildMonthNav());
       self.innerContainer = createElement("div", "flatpickr-innerContainer");
       if (self.config.weekNumbers) {
-        var _a = buildWeeks(), weekWrapper = _a.weekWrapper, weekNumbers = _a.weekNumbers;
+        var _a2 = buildWeeks(), weekWrapper = _a2.weekWrapper, weekNumbers = _a2.weekNumbers;
         self.innerContainer.appendChild(weekWrapper);
         self.weekNumbers = weekNumbers;
         self.weekWrapper = weekWrapper;
@@ -2049,7 +2050,7 @@ function FlatpickrInstance(element, instanceConfig) {
       self.currentMonth = self._initialDate.getMonth();
     }
     if (self.config.enableTime === true) {
-      var _a = getDefaultHours(self.config), hours = _a.hours, minutes = _a.minutes, seconds = _a.seconds;
+      var _a2 = getDefaultHours(self.config), hours = _a2.hours, minutes = _a2.minutes, seconds = _a2.seconds;
       setHours(hours, minutes, seconds);
     }
     self.redraw();
@@ -2181,7 +2182,7 @@ function FlatpickrInstance(element, instanceConfig) {
     }
   }
   function isEnabled(date, timeless) {
-    var _a;
+    var _a2;
     if (timeless === void 0) {
       timeless = true;
     }
@@ -2192,7 +2193,7 @@ function FlatpickrInstance(element, instanceConfig) {
       return true;
     if (dateToCheck === void 0)
       return false;
-    var bool = !!self.config.enable, array = (_a = self.config.enable) !== null && _a !== void 0 ? _a : self.config.disable;
+    var bool = !!self.config.enable, array = (_a2 = self.config.enable) !== null && _a2 !== void 0 ? _a2 : self.config.disable;
     for (var i = 0, d = void 0; i < array.length; i++) {
       d = array[i];
       if (typeof d === "function" && d(dateToCheck))
@@ -2905,7 +2906,7 @@ function FlatpickrInstance(element, instanceConfig) {
     try {
       if (self.input.parentNode)
         self.input.parentNode.insertBefore(self.mobileInput, self.input.nextSibling);
-    } catch (_a) {
+    } catch (_a2) {
     }
     bind(self.mobileInput, "change", function(e) {
       self.setDate(getEventTarget(e).value, false, self.mobileFormatStr);
@@ -3154,9 +3155,12 @@ function handleAriaHiddenChange(mutationsList, observer) {
         document.getElementById("step-two-input-svg-to").hidden = true;
         document.getElementById("title-popup-form").style.display = "block";
         var sectionFormBlock = document.getElementById("section-form-block");
-        var myForm = document.getElementById("section-form");
-        sectionFormBlock.appendChild(myForm);
+        var myForm2 = document.getElementById("section-form");
+        sectionFormBlock.appendChild(myForm2);
       } else {
+        var myPopup = document.querySelector(".popup__content");
+        var myForm2 = document.getElementById("section-form");
+        myPopup.appendChild(myForm2);
         console.log("oppen-popup popupState === true");
         document.getElementById("title-popup-form").style.display = "none";
         console.log(popupState);
@@ -3205,14 +3209,16 @@ function handleAriaHiddenChange(mutationsList, observer) {
 })();
 (function() {
   var roomList = document.getElementById("step-one-list");
-  var listItems = roomList.getElementsByTagName("li");
-  Array.from(listItems).forEach(function(listItem) {
-    listItem.addEventListener("click", function() {
-      stateForm["rooms"] = this.textContent;
-      document.getElementById("step-one").hidden = true;
-      document.getElementById("step-two").hidden = false;
+  if (roomList) {
+    var listItems = roomList.getElementsByTagName("li");
+    Array.from(listItems).forEach(function(listItem) {
+      listItem.addEventListener("click", function() {
+        stateForm["rooms"] = this.textContent;
+        document.getElementById("step-one").hidden = true;
+        document.getElementById("step-two").hidden = false;
+      });
     });
-  });
+  }
 })();
 function isValideZipe(number) {
   var zipeRegex = /^\d{5}$/;
@@ -3266,9 +3272,13 @@ function lookupPostalCodeFrom(event) {
   }
   event.target.value = event.target.value.replace(/[^0-9]/g, "");
 }
-document.getElementById("step-two-input-from").addEventListener("input", function(event) {
-  lookupPostalCodeFrom(event);
-});
+(function(element) {
+  if (element && element.id !== "thank-you-page") {
+    document.getElementById("step-two-input-from").addEventListener("input", function(event) {
+      lookupPostalCodeFrom(event);
+    });
+  }
+})(document.body);
 function lookupPostalCodeTo(event) {
   var postalCodeInput = document.getElementById("step-two-input-to");
   var resultDiv = document.getElementById("step-two-input-to-rezult");
@@ -3317,7 +3327,7 @@ function lookupPostalCodeTo(event) {
   }
   event.target.value = event.target.value.replace(/[^0-9]/g, "");
 }
-document.getElementById("step-two-input-to").addEventListener("input", function(event) {
+(_a = document.getElementById("step-two-input-to")) == null ? void 0 : _a.addEventListener("input", function(event) {
   lookupPostalCodeTo(event);
 });
 function updateButtonState() {
@@ -3342,10 +3352,14 @@ function updateButtonState() {
 }
 var inputFrom = document.getElementById("step-two-input-from");
 var inputTo = document.getElementById("step-two-input-to");
-inputFrom.addEventListener("input", updateButtonState);
-inputTo.addEventListener("input", updateButtonState);
-updateButtonState();
-document.getElementById("step-two-btn").addEventListener("click", function() {
+inputFrom == null ? void 0 : inputFrom.addEventListener("input", updateButtonState);
+inputTo == null ? void 0 : inputTo.addEventListener("input", updateButtonState);
+(function(element) {
+  if (element && element.id !== "thank-you-page") {
+    updateButtonState();
+  }
+})(document.body);
+(_b = document.getElementById("step-two-btn")) == null ? void 0 : _b.addEventListener("click", function() {
   var fromErrorMesage = document.getElementById("step-two-input-from-error");
   fromErrorMesage.innerText = "Zip Code should contain 5 digits";
   if (inputFrom.value === "") {
@@ -3375,28 +3389,31 @@ document.getElementById("step-two-btn").addEventListener("click", function() {
     document.getElementById("step-two-btn").classList.add("invalid-btn");
   }
 });
-(function() {
-  var picker = document.getElementById("pickerID");
-  var ThreeBtn = document.getElementById("step-three-btn");
-  function updateButtonClass() {
-    ThreeBtn.classList.remove("invalid-btn", "valid-btn");
-    if (picker.value) {
-      ThreeBtn.classList.add("valid-btn");
-    } else {
-      ThreeBtn.classList.add("invalid-btn");
-    }
+(function(element) {
+  if (element && element.id !== "thank-you-page") {
+    let updateButtonClass2 = function() {
+      ThreeBtn.classList.remove("invalid-btn", "valid-btn");
+      if (picker.value) {
+        ThreeBtn.classList.add("valid-btn");
+      } else {
+        ThreeBtn.classList.add("invalid-btn");
+      }
+    };
+    var updateButtonClass = updateButtonClass2;
+    var picker = document.getElementById("pickerID");
+    var ThreeBtn = document.getElementById("step-three-btn");
+    picker.addEventListener("input", updateButtonClass2);
+    updateButtonClass2();
   }
-  picker.addEventListener("input", updateButtonClass);
-  updateButtonClass();
-})();
-document.getElementById("pickerID").addEventListener("input", () => {
+})(document.body);
+(_c = document.getElementById("pickerID")) == null ? void 0 : _c.addEventListener("input", () => {
   var errorData = document.getElementById("step-three-input-from-error");
   if (document.getElementById("pickerID").value) {
     errorData.hidden = true;
     document.getElementById("pickerID").classList.remove("error-block");
   }
 });
-document.getElementById("step-three-btn").addEventListener("click", () => {
+(_d = document.getElementById("step-three-btn")) == null ? void 0 : _d.addEventListener("click", () => {
   var errorData = document.getElementById("step-three-input-from-error");
   var pickerID = document.getElementById("pickerID");
   console.log(pickerID.value);
@@ -3432,7 +3449,7 @@ function isValidEmail(email) {
 }
 var mailCodeElement = document.getElementById("mail-code");
 var btnFourth = document.getElementById("step-fourth-btn");
-mailCodeElement.addEventListener("input", function(e) {
+mailCodeElement == null ? void 0 : mailCodeElement.addEventListener("input", function(e) {
   var errorMessage = document.getElementById("step-fourth-input-to-error");
   btnFourth.classList.remove("valid-btn");
   btnFourth.classList.add("invalid-btn");
@@ -3479,195 +3496,213 @@ function handleClick() {
     btnFourth.classList.add("invalid-btn");
   }
 }
-btnFourth.addEventListener("click", handleClick);
-(function() {
-  function isValidName(name) {
-    var nameRegex = /^[a-zA-Z]{3,19}$/u;
-    return nameRegex.test(name);
-  }
-  var nameCodeElement = document.getElementById("first-name");
-  var nameCodeElementLast = document.getElementById("last-name");
-  var inputt = document.getElementById("phone-code");
-  var btnFifth = document.getElementById("step-fifth-btn");
-  var lastLastError = document.getElementById("step-fifth-input-first-name-error");
-  var firstLastError = document.getElementById("step-fifth-input-first-name-error");
-  function formatPhoneNumber(event) {
-    if (inputt.value.length < 5) {
-      if (inputt.value === "1" || inputt.value === "0") {
-        document.getElementById("phone-code").classList.add("error-block");
-        document.getElementById("step-fifth-input-phone-error").hidden = false;
-        document.getElementById("step-fifth-input-phone-error").innerText = "the first digit cannot be zero or one";
-        inputt.value = "";
+btnFourth == null ? void 0 : btnFourth.addEventListener("click", handleClick);
+(function(element) {
+  if (element && element.id !== "thank-you-page") {
+    let isValidName2 = function(name) {
+      var nameRegex = /^[a-zA-Z]{3,19}$/u;
+      return nameRegex.test(name);
+    }, formatPhoneNumber2 = function(event) {
+      if (inputt.value.length < 5) {
+        if (inputt.value === "1" || inputt.value === "0") {
+          document.getElementById("phone-code").classList.add("error-block");
+          document.getElementById("step-fifth-input-phone-error").hidden = false;
+          document.getElementById("step-fifth-input-phone-error").innerText = "the first digit cannot be zero or one";
+          inputt.value = "";
+        }
       }
-    }
-    var phoneNumber = inputt.value.replace(/\D/g, "");
-    if (phoneNumber.length > 0) {
-      var formattedNumber = "(" + phoneNumber.slice(0, 3) + ") " + phoneNumber.slice(3, 6) + "-" + phoneNumber.slice(6, 10);
-      inputt.value = formattedNumber;
+      var phoneNumber = inputt.value.replace(/\D/g, "");
+      if (phoneNumber.length > 0) {
+        var formattedNumber = "(" + phoneNumber.slice(0, 3) + ") " + phoneNumber.slice(3, 6) + "-" + phoneNumber.slice(6, 10);
+        inputt.value = formattedNumber;
+        var phoneInput = document.getElementById("phone-code");
+        if (/[^0-9]/gm.test(event.target.value)) {
+          document.getElementById("step-fifth-input-phone-error").innerText = "the phone number field must contain only numbers";
+          document.getElementById("step-fifth-input-phone-error").hidden = false;
+          phoneInput.classList.add("error-block");
+        } else {
+          phoneInput.classList.remove("error-block");
+          document.getElementById("step-fifth-input-phone-error").hidden = true;
+        }
+      }
+    }, checkedFirst2 = function() {
+      var isFirstNameValid = isValidName2(nameCodeElement.value);
+      var firstInput = document.getElementById("first-name");
+      if (isFirstNameValid) {
+        nameCodeElement.value.replace(/[^a-zA-Z]{3,19}/g, "");
+        firstLastError.hidden = true;
+        firstInput.classList.remove("error-block");
+      } else {
+        firstLastError.hidden = false;
+        firstLastError.innerText = "the first name field must not be empty";
+        firstInput.classList.add("error-block");
+      }
+    }, checkedLast2 = function() {
+      var isLastNameValid = isValidName2(nameCodeElementLast.value);
+      var lastInput = document.getElementById("last-name");
+      if (isLastNameValid) {
+        lastLastError.hidden = true;
+        lastInput.classList.remove("error-block");
+      } else {
+        nameCodeElementLast.value.replace(/[^a-zA-Z]{3,19}/g, "");
+        lastLastError.hidden = false;
+        lastLastError.innerText = "the first name field must not be empty";
+        lastInput.classList.add("error-block");
+      }
+    };
+    var isValidName = isValidName2, formatPhoneNumber = formatPhoneNumber2, checkedFirst = checkedFirst2, checkedLast = checkedLast2;
+    var nameCodeElement = document.getElementById("first-name");
+    var nameCodeElementLast = document.getElementById("last-name");
+    var inputt = document.getElementById("phone-code");
+    var btnFifth = document.getElementById("step-fifth-btn");
+    var lastLastError = document.getElementById("step-fifth-input-first-name-error");
+    var firstLastError = document.getElementById("step-fifth-input-first-name-error");
+    nameCodeElement == null ? void 0 : nameCodeElement.addEventListener("input", function(event) {
+      var checkHiddenNumber = document.getElementById("step-fifth-input-phone-error");
+      var checkHiddenNames = document.getElementById("step-fifth-input-first-name-error");
+      var checkPhoneValue = document.getElementById("phone-code");
+      var btnValided = document.getElementById("step-fifth-btn");
+      var lastName = document.getElementById("last-name");
+      var firstName = document.getElementById("first-name");
+      if (firstName.value.length > 19) {
+        event.target.value = event.target.value.slice(0, -1);
+      }
+      setTimeout(() => {
+        if (firstName.value.length >= 3 && lastName.value.length >= 3 && checkHiddenNumber.hidden && checkHiddenNames.hidden && checkPhoneValue.value.length === 14) {
+          btnValided.classList.add("valid-btn");
+        } else {
+          btnValided.classList.remove("valid-btn");
+        }
+      });
+      checkedFirst2();
+      event.target.value = event.target.value.replace(/[^a-zA-Z]/g, "");
+    });
+    nameCodeElementLast.addEventListener("input", function(event) {
+      var checkHiddenNumber = document.getElementById("step-fifth-input-phone-error");
+      var checkHiddenNames = document.getElementById("step-fifth-input-first-name-error");
+      var checkPhoneValue = document.getElementById("phone-code");
+      var btnValided = document.getElementById("step-fifth-btn");
+      var lastName = document.getElementById("last-name");
+      var firstName = document.getElementById("first-name");
+      if (lastName.value.length > 19) {
+        event.target.value = event.target.value.slice(0, -1);
+      }
+      setTimeout(() => {
+        if (firstName.value.length >= 3 && lastName.value.length >= 3 && checkHiddenNumber.hidden && checkHiddenNames.hidden && checkPhoneValue.value.length === 14) {
+          btnValided.classList.add("valid-btn");
+        } else {
+          btnValided.classList.remove("valid-btn");
+        }
+      });
+      checkedLast2();
+      event.target.value = event.target.value.replace(/[^a-zA-Z]/g, "");
+    });
+    inputt.addEventListener("input", function(event) {
+      var checkPhoneValue = document.getElementById("phone-code");
+      var nameRegex = /^\(\d\d\d\)\s\d\d\d-\d\d\d\d$/gm;
+      var validedPhone = nameRegex.test(checkPhoneValue);
       var phoneInput = document.getElementById("phone-code");
-      if (/[^0-9]/gm.test(event.target.value)) {
-        document.getElementById("step-fifth-input-phone-error").innerText = "the phone number field must contain only numbers";
+      var checkHiddenNumber = document.getElementById("step-fifth-input-phone-error");
+      var checkHiddenNames = document.getElementById("step-fifth-input-first-name-error");
+      var btnValided = document.getElementById("step-fifth-btn");
+      var lastName = document.getElementById("last-name");
+      var firstName = document.getElementById("first-name");
+      if (/[^\(\) \-0-9]/gm.test(event.target.value)) {
         document.getElementById("step-fifth-input-phone-error").hidden = false;
         phoneInput.classList.add("error-block");
+      } else if (validedPhone) {
+        phoneInput.classList.remove("error-block");
+        document.getElementById("step-fifth-input-phone-error").hidden = true;
       } else {
         phoneInput.classList.remove("error-block");
         document.getElementById("step-fifth-input-phone-error").hidden = true;
       }
-    }
-  }
-  function checkedFirst() {
-    var isFirstNameValid = isValidName(nameCodeElement.value);
-    var firstInput = document.getElementById("first-name");
-    if (isFirstNameValid) {
-      nameCodeElement.value.replace(/[^a-zA-Z]{3,19}/g, "");
-      firstLastError.hidden = true;
-      firstInput.classList.remove("error-block");
-    } else {
-      firstLastError.hidden = false;
-      firstLastError.innerText = "the first name field must not contain numbers or symbols, only letters";
-      firstInput.classList.add("error-block");
-    }
-  }
-  function checkedLast() {
-    var isLastNameValid = isValidName(nameCodeElementLast.value);
-    var lastInput = document.getElementById("last-name");
-    if (isLastNameValid) {
-      lastLastError.hidden = true;
-      lastInput.classList.remove("error-block");
-    } else {
-      nameCodeElementLast.value.replace(/[^a-zA-Z]{3,19}/g, "");
-      lastLastError.hidden = false;
-      lastLastError.innerText = "the last name field must not contain numbers or symbols, only letters";
-      lastInput.classList.add("error-block");
-    }
-  }
-  nameCodeElement.addEventListener("input", function(event) {
-    var checkHiddenNumber = document.getElementById("step-fifth-input-phone-error");
-    var checkHiddenNames = document.getElementById("step-fifth-input-first-name-error");
-    var checkPhoneValue = document.getElementById("phone-code");
-    var btnValided = document.getElementById("step-fifth-btn");
-    var lastName = document.getElementById("last-name");
-    var firstName = document.getElementById("first-name");
-    setTimeout(() => {
-      if (firstName.value.length >= 3 && lastName.value.length >= 3 && checkHiddenNumber.hidden && checkHiddenNames.hidden && checkPhoneValue.value.length === 14) {
-        btnValided.classList.add("valid-btn");
+      setTimeout(() => {
+        event.target.value = event.target.value.replace(/[^\(\) \-0-9]/g, "");
+        if (checkPhoneValue.value.length === 14) {
+          phoneInput.classList.remove("error-block");
+          document.getElementById("step-fifth-input-phone-error").hidden = true;
+        }
+        if (firstName.value.length >= 3 && lastName.value.length >= 3 && checkHiddenNumber.hidden && checkHiddenNames.hidden && checkPhoneValue.value.length === 14) {
+          btnValided.classList.add("valid-btn");
+        } else {
+          btnValided.classList.remove("valid-btn");
+        }
+      });
+      formatPhoneNumber2(event);
+    });
+    btnFifth.addEventListener("click", function() {
+      var firstInput = document.getElementById("first-name");
+      var lastInput = document.getElementById("last-name");
+      var phoneInput = document.getElementById("phone-code");
+      var firstLastError2 = document.getElementById("step-fifth-input-first-name-error");
+      var errorPhone = document.getElementById("step-fifth-input-phone-error");
+      if (firstInput.value === "") {
+        firstLastError2.hidden = false;
+        firstLastError2.innerText = "The First Name field must not be empty";
+        firstInput.classList.add("error-block");
+      } else if (lastInput.value === "") {
+        firstLastError2.hidden = false;
+        firstLastError2.innerText = "The Last Name field must not be empty";
+        lastInput.classList.add("error-block");
+      } else if (phoneInput.value === "") {
+        phoneInput.classList.add("error-block");
+        errorPhone.hidden = false;
+        errorPhone.innerText = "the phone number field must not be empty";
+      } else if (btnFifth.classList.contains("valid-btn")) {
+        firstLastError2.innerText = "the first name and last name field must not contain numbers.";
+        errorPhone.innerText = "the phone number field must contain only numbers";
+        stateForm["firstName"] = nameCodeElement.value;
+        nameCodeElement.value = "";
+        stateForm["lastName"] = nameCodeElementLast.value;
+        nameCodeElementLast.value = "";
+        stateForm["PhoneNumber"] = inputt.value;
+        inputt.value = "";
+        document.getElementById("step-fifth").hidden = true;
+        window.location.href = "/thank-you-page.html";
+        console.log(stateForm);
       } else {
-        btnValided.classList.remove("valid-btn");
+        firstLastError2.innerText = "the first name and last name field must not contain numbers.";
+        errorPhone.innerText = "the phone number field must contain only numbers";
       }
     });
-    checkedFirst();
-    event.target.value = event.target.value.replace(/[^a-zA-Z]/g, "");
-  });
-  nameCodeElementLast.addEventListener("input", function(event) {
-    var checkHiddenNumber = document.getElementById("step-fifth-input-phone-error");
-    var checkHiddenNames = document.getElementById("step-fifth-input-first-name-error");
-    var checkPhoneValue = document.getElementById("phone-code");
-    var btnValided = document.getElementById("step-fifth-btn");
-    var lastName = document.getElementById("last-name");
-    var firstName = document.getElementById("first-name");
-    setTimeout(() => {
-      if (firstName.value.length >= 3 && lastName.value.length >= 3 && checkHiddenNumber.hidden && checkHiddenNames.hidden && checkPhoneValue.value.length === 14) {
-        btnValided.classList.add("valid-btn");
-      } else {
-        btnValided.classList.remove("valid-btn");
-      }
-    });
-    checkedLast();
-    event.target.value = event.target.value.replace(/[^a-zA-Z]/g, "");
-  });
-  inputt.addEventListener("input", function(event) {
-    var checkPhoneValue = document.getElementById("phone-code");
-    var nameRegex = /^\(\d\d\d\)\s\d\d\d-\d\d\d\d$/gm;
-    var validedPhone = nameRegex.test(checkPhoneValue);
-    var phoneInput = document.getElementById("phone-code");
-    var checkHiddenNumber = document.getElementById("step-fifth-input-phone-error");
-    var checkHiddenNames = document.getElementById("step-fifth-input-first-name-error");
-    var btnValided = document.getElementById("step-fifth-btn");
-    var lastName = document.getElementById("last-name");
-    var firstName = document.getElementById("first-name");
-    if (/[^\(\) \-0-9]/gm.test(event.target.value)) {
-      document.getElementById("step-fifth-input-phone-error").hidden = false;
-      phoneInput.classList.add("error-block");
-    } else if (validedPhone) {
-      phoneInput.classList.remove("error-block");
-      document.getElementById("step-fifth-input-phone-error").hidden = true;
-    } else {
-      phoneInput.classList.remove("error-block");
-      document.getElementById("step-fifth-input-phone-error").hidden = true;
-    }
-    setTimeout(() => {
-      event.target.value = event.target.value.replace(/[^\(\) \-0-9]/g, "");
-      if (checkPhoneValue.value.length === 14) {
-        phoneInput.classList.remove("error-block");
-        document.getElementById("step-fifth-input-phone-error").hidden = true;
-      }
-      if (firstName.value.length >= 3 && lastName.value.length >= 3 && checkHiddenNumber.hidden && checkHiddenNames.hidden && checkPhoneValue.value.length === 14) {
-        btnValided.classList.add("valid-btn");
-      } else {
-        btnValided.classList.remove("valid-btn");
-      }
-    });
-    formatPhoneNumber(event);
-  });
-  btnFifth.addEventListener("click", function() {
-    var firstInput = document.getElementById("first-name");
-    var lastInput = document.getElementById("last-name");
-    var phoneInput = document.getElementById("phone-code");
-    var firstLastError2 = document.getElementById("step-fifth-input-first-name-error");
-    var errorPhone = document.getElementById("step-fifth-input-phone-error");
-    if (firstInput.value === "") {
-      firstLastError2.hidden = false;
-      firstLastError2.innerText = "The First Name field must not be empty";
-      firstInput.classList.add("error-block");
-    } else if (lastInput.value === "") {
-      firstLastError2.hidden = false;
-      firstLastError2.innerText = "The Last Name field must not be empty";
-      lastInput.classList.add("error-block");
-    } else if (phoneInput.value === "") {
-      phoneInput.classList.add("error-block");
-      errorPhone.hidden = false;
-      errorPhone.innerText = "the phone number field must not be empty";
-    } else if (btnFifth.classList.contains("valid-btn")) {
-      firstLastError2.innerText = "the first name and last name field must not contain numbers.";
-      errorPhone.innerText = "the phone number field must contain only numbers";
-      stateForm["firstName"] = nameCodeElement.value;
-      nameCodeElement.value = "";
-      stateForm["lastName"] = nameCodeElementLast.value;
-      nameCodeElementLast.value = "";
-      stateForm["PhoneNumber"] = inputt.value;
-      inputt.value = "";
-      document.getElementById("step-fifth").hidden = true;
-      window.location.href = "/thank-you-page.html";
-      console.log(stateForm);
-    } else {
-      firstLastError2.innerText = "the first name and last name field must not contain numbers.";
-      errorPhone.innerText = "the phone number field must contain only numbers";
-    }
-  });
+  }
+})(document.body);
+(() => {
+  var bodyElement = document.body;
+  if (bodyElement && bodyElement.id === "company-id") {
+    var newImage = document.createElement("img");
+    newImage.src = "./src/img/midland.png";
+    newImage.alt = "img";
+    newImage.id = "midland-img-id";
+    var popupTextElement = document.querySelector(".popup__img-midland");
+    popupTextElement.hidden = false;
+    popupTextElement.appendChild(newImage);
+  }
 })();
 (function() {
   var choisesCards = document.querySelectorAll(".choises__card");
-  var myPopupText = document.querySelector(".popup__text");
-  var popupContent = document.querySelector(".popup__content");
   var sectionFormBlock = document.getElementById("section-form-block");
-  var popup = document.getElementById("popup");
-  var myForm = document.getElementById("section-form");
-  var myPopup = document.querySelector(".popup__content");
   choisesCards.forEach(
     (card) => {
+      var myPopupText = document.querySelector(".popup__text");
+      var popupContent2 = document.querySelector(".popup__content");
+      var popup = document.getElementById("popup");
+      var myPopup = document.querySelector(".popup__content");
+      var myForm2 = document.getElementById("section-form");
       card.addEventListener(
         "click",
         (e) => {
           var imageTarget = e.currentTarget.querySelector("img");
-          var clonedImage = imageTarget.cloneNode(true);
-          myPopup.appendChild(myForm);
+          myPopup.appendChild(myForm2);
           myPopupText.removeChild(myPopupText.firstChild);
+          var clonedImage = imageTarget.cloneNode(true);
           myPopupText.appendChild(clonedImage);
           document.removeEventListener("click", outsidePopupClick);
           setTimeout(function() {
             if (popup.getAttribute("aria-hidden") === "true") {
               console.log("Класс присутствует");
-              popupContent.addEventListener("click", function(event) {
+              popupContent2.addEventListener("click", function(event) {
                 event.stopPropagation();
               });
               document.addEventListener("click", outsidePopupClick);
@@ -3717,15 +3752,17 @@ btnFourth.addEventListener("click", handleClick);
     }
   );
 })();
-(function() {
-  var inputFromBlock = document.getElementById("step-two-input-from-block");
-  var inputFrom2 = document.getElementById("step-two-input-from");
-  var inputToBlock = document.getElementById("step-two-input-to-block");
-  var inputTo2 = document.getElementById("step-two-input-to");
-  inputFromBlock.addEventListener("click", function() {
-    inputFrom2.focus();
-  });
-  inputToBlock.addEventListener("click", function() {
-    inputTo2.focus();
-  });
-})();
+(function(element) {
+  if (element && element.id !== "thank-you-page") {
+    var inputFromBlock = document.getElementById("step-two-input-from-block");
+    var inputFrom2 = document.getElementById("step-two-input-from");
+    var inputToBlock = document.getElementById("step-two-input-to-block");
+    var inputTo2 = document.getElementById("step-two-input-to");
+    inputFromBlock.addEventListener("click", function() {
+      inputFrom2.focus();
+    });
+    inputToBlock.addEventListener("click", function() {
+      inputTo2.focus();
+    });
+  }
+})(document.body);
