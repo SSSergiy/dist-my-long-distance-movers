@@ -770,7 +770,7 @@ h6 {
 .choises .choises__container .choises__cards .choises__card .mark-choice span::before {
   content: "";
   position: absolute;
-  right: -15%;
+  right: -14%;
   top: 0;
   width: 0;
   height: 0;
@@ -782,7 +782,7 @@ h6 {
 .choises .choises__container .choises__cards .choises__card .mark-choice span::after {
   content: "";
   position: absolute;
-  right: -15%;
+  right: -14%;
   bottom: 0;
   width: 0;
   height: 0;

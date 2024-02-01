@@ -1,25 +1,25 @@
 var _a, _b, _c, _d;
 (function polyfill() {
-  var relList = document.createElement("link").relList;
+  const relList = document.createElement("link").relList;
   if (relList && relList.supports && relList.supports("modulepreload")) {
     return;
   }
-  for (var link of document.querySelectorAll('link[rel="modulepreload"]')) {
+  for (const link of document.querySelectorAll('link[rel="modulepreload"]')) {
     processPreload(link);
   }
   new MutationObserver((mutations) => {
-    for (var mutation of mutations) {
+    for (const mutation of mutations) {
       if (mutation.type !== "childList") {
         continue;
       }
-      for (var node of mutation.addedNodes) {
+      for (const node of mutation.addedNodes) {
         if (node.tagName === "LINK" && node.rel === "modulepreload")
           processPreload(node);
       }
     }
   }).observe(document, { childList: true, subtree: true });
   function getFetchOpts(link) {
-    var fetchOpts = {};
+    const fetchOpts = {};
     if (link.integrity)
       fetchOpts.integrity = link.integrity;
     if (link.referrerPolicy)
@@ -36,25 +36,25 @@ var _a, _b, _c, _d;
     if (link.ep)
       return;
     link.ep = true;
-    var fetchOpts = getFetchOpts(link);
+    const fetchOpts = getFetchOpts(link);
     fetch(link.href, fetchOpts);
   }
 })();
-var style = "";
+const style = "";
 function isWebp() {
   function testWebP(callback) {
-    var webP = new Image();
+    let webP = new Image();
     webP.onload = webP.onerror = function() {
       callback(webP.height == 2);
     };
     webP.src = "data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACyAgCdASoCAAIALmk0mk0iIiIiIgBoSygABc6WWgAA/veff/0PP8bA//LwYAAA";
   }
   testWebP(function(support) {
-    var className = support === true ? "webp" : "no-webp";
+    let className = support === true ? "webp" : "no-webp";
     document.documentElement.classList.add(className);
   });
 }
-var _slideUp = (target, duration2 = 500, showmore = 0) => {
+let _slideUp = (target, duration2 = 500, showmore = 0) => {
   if (!target.classList.contains("_slide")) {
     target.classList.add("_slide");
     target.style.transitionProperty = "height, margin, padding";
@@ -86,12 +86,12 @@ var _slideUp = (target, duration2 = 500, showmore = 0) => {
     }, duration2);
   }
 };
-var _slideDown = (target, duration2 = 500, showmore = 0) => {
+let _slideDown = (target, duration2 = 500, showmore = 0) => {
   if (!target.classList.contains("_slide")) {
     target.classList.add("_slide");
     target.hidden = target.hidden ? false : null;
     showmore ? target.style.removeProperty("height") : null;
-    var height = target.offsetHeight;
+    let height = target.offsetHeight;
     target.style.overflow = "hidden";
     target.style.height = showmore ? `${showmore}px` : `0px`;
     target.style.paddingTop = 0;
@@ -120,28 +120,28 @@ var _slideDown = (target, duration2 = 500, showmore = 0) => {
     }, duration2);
   }
 };
-var _slideToggle = (target, duration2 = 500) => {
+let _slideToggle = (target, duration2 = 500) => {
   if (target.hidden) {
     return _slideDown(target, duration2);
   } else {
     return _slideUp(target, duration2);
   }
 };
-var bodyLockStatus = true;
-var bodyLockToggle = (delay = 500) => {
+let bodyLockStatus = true;
+let bodyLockToggle = (delay = 500) => {
   if (document.documentElement.classList.contains("lock")) {
     bodyUnlock(delay);
   } else {
     bodyLock(delay);
   }
 };
-var bodyUnlock = (delay = 500) => {
-  var body = document.querySelector("body");
+let bodyUnlock = (delay = 500) => {
+  let body = document.querySelector("body");
   if (bodyLockStatus) {
-    var lock_padding = document.querySelectorAll("[data-lp]");
+    let lock_padding = document.querySelectorAll("[data-lp]");
     setTimeout(() => {
-      for (var index = 0; index < lock_padding.length; index++) {
-        var el = lock_padding[index];
+      for (let index = 0; index < lock_padding.length; index++) {
+        const el = lock_padding[index];
         el.style.paddingRight = "0px";
       }
       body.style.paddingRight = "0px";
@@ -153,12 +153,12 @@ var bodyUnlock = (delay = 500) => {
     }, delay);
   }
 };
-var bodyLock = (delay = 500) => {
-  var body = document.querySelector("body");
+let bodyLock = (delay = 500) => {
+  let body = document.querySelector("body");
   if (bodyLockStatus) {
-    var lock_padding = document.querySelectorAll("[data-lp]");
-    for (var index = 0; index < lock_padding.length; index++) {
-      var el = lock_padding[index];
+    let lock_padding = document.querySelectorAll("[data-lp]");
+    for (let index = 0; index < lock_padding.length; index++) {
+      const el = lock_padding[index];
       el.style.paddingRight = window.innerWidth - document.querySelector(".wrapper").offsetWidth + "px";
     }
     body.style.paddingRight = window.innerWidth - document.querySelector(".wrapper").offsetWidth + "px";
@@ -170,9 +170,9 @@ var bodyLock = (delay = 500) => {
   }
 };
 function spollers() {
-  var spollersArray = document.querySelectorAll("[data-spollers]");
+  const spollersArray = document.querySelectorAll("[data-spollers]");
   if (spollersArray.length > 0) {
-    var initSpollers2 = function(spollersArray2, matchMedia = false) {
+    let initSpollers2 = function(spollersArray2, matchMedia = false) {
       spollersArray2.forEach((spollersBlock) => {
         spollersBlock = matchMedia ? spollersBlock.item : spollersBlock;
         if (matchMedia.matches || !matchMedia) {
@@ -184,10 +184,10 @@ function spollers() {
         }
       });
     }, initSpollerBody2 = function(spollersBlock, hideSpollerBody = true) {
-      var spollerItems = spollersBlock.querySelectorAll("details");
+      let spollerItems = spollersBlock.querySelectorAll("details");
       if (spollerItems.length) {
         spollerItems.forEach((spollerItem) => {
-          var spollerTitle = spollerItem.querySelector("summary");
+          let spollerTitle = spollerItem.querySelector("summary");
           if (hideSpollerBody) {
             spollerTitle.removeAttribute("tabindex");
             if (!spollerItem.hasAttribute("data-open")) {
@@ -206,16 +206,16 @@ function spollers() {
         });
       }
     }, setSpollerAction2 = function(e) {
-      var el = e.target;
+      const el = e.target;
       if (el.closest("summary") && el.closest("[data-spollers]")) {
         e.preventDefault();
         if (el.closest("[data-spollers]").classList.contains("_spoller-init")) {
-          var spollerTitle = el.closest("summary");
-          var spollerBlock = spollerTitle.closest("details");
-          var spollersBlock = spollerTitle.closest("[data-spollers]");
-          var oneSpoller = spollersBlock.hasAttribute("data-one-spoller");
-          var scrollSpoller = spollerBlock.hasAttribute("data-spoller-scroll");
-          var spollerSpeed = spollersBlock.dataset.spollersSpeed ? parseInt(spollersBlock.dataset.spollersSpeed) : 500;
+          const spollerTitle = el.closest("summary");
+          const spollerBlock = spollerTitle.closest("details");
+          const spollersBlock = spollerTitle.closest("[data-spollers]");
+          const oneSpoller = spollersBlock.hasAttribute("data-one-spoller");
+          const scrollSpoller = spollerBlock.hasAttribute("data-spoller-scroll");
+          const spollerSpeed = spollersBlock.dataset.spollersSpeed ? parseInt(spollersBlock.dataset.spollersSpeed) : 500;
           if (!spollersBlock.querySelectorAll("._slide").length) {
             if (oneSpoller && !spollerBlock.open) {
               hideSpollersBody2(spollersBlock);
@@ -226,9 +226,9 @@ function spollers() {
             spollerTitle.classList.toggle("_spoller-active");
             _slideToggle(spollerTitle.nextElementSibling, spollerSpeed);
             if (scrollSpoller && spollerTitle.classList.contains("_spoller-active")) {
-              var scrollSpollerValue = spollerBlock.dataset.spollerScroll;
-              var scrollSpollerOffset = +scrollSpollerValue ? +scrollSpollerValue : 0;
-              var scrollSpollerNoHeader = spollerBlock.hasAttribute("data-spoller-scroll-noheader") ? document.querySelector(".header").offsetHeight : 0;
+              const scrollSpollerValue = spollerBlock.dataset.spollerScroll;
+              const scrollSpollerOffset = +scrollSpollerValue ? +scrollSpollerValue : 0;
+              const scrollSpollerNoHeader = spollerBlock.hasAttribute("data-spoller-scroll-noheader") ? document.querySelector(".header").offsetHeight : 0;
               window.scrollTo(
                 {
                   top: spollerBlock.offsetTop - (scrollSpollerOffset + scrollSpollerNoHeader),
@@ -240,13 +240,13 @@ function spollers() {
         }
       }
       if (!el.closest("[data-spollers]")) {
-        var spollersClose = document.querySelectorAll("[data-spoller-close]");
+        const spollersClose = document.querySelectorAll("[data-spoller-close]");
         if (spollersClose.length) {
           spollersClose.forEach((spollerClose) => {
-            var spollersBlock = spollerClose.closest("[data-spollers]");
-            var spollerCloseBlock = spollerClose.parentNode;
+            const spollersBlock = spollerClose.closest("[data-spollers]");
+            const spollerCloseBlock = spollerClose.parentNode;
             if (spollersBlock.classList.contains("_spoller-init")) {
-              var spollerSpeed = spollersBlock.dataset.spollersSpeed ? parseInt(spollersBlock.dataset.spollersSpeed) : 500;
+              const spollerSpeed = spollersBlock.dataset.spollersSpeed ? parseInt(spollersBlock.dataset.spollersSpeed) : 500;
               spollerClose.classList.remove("_spoller-active");
               _slideUp(spollerClose.nextElementSibling, spollerSpeed);
               setTimeout(() => {
@@ -257,10 +257,10 @@ function spollers() {
         }
       }
     }, hideSpollersBody2 = function(spollersBlock) {
-      var spollerActiveBlock = spollersBlock.querySelector("details[open]");
+      const spollerActiveBlock = spollersBlock.querySelector("details[open]");
       if (spollerActiveBlock && !spollersBlock.querySelectorAll("._slide").length) {
-        var spollerActiveTitle = spollerActiveBlock.querySelector("summary");
-        var spollerSpeed = spollersBlock.dataset.spollersSpeed ? parseInt(spollersBlock.dataset.spollersSpeed) : 500;
+        const spollerActiveTitle = spollerActiveBlock.querySelector("summary");
+        const spollerSpeed = spollersBlock.dataset.spollersSpeed ? parseInt(spollersBlock.dataset.spollersSpeed) : 500;
         spollerActiveTitle.classList.remove("_spoller-active");
         _slideUp(spollerActiveTitle.nextElementSibling, spollerSpeed);
         setTimeout(() => {
@@ -270,13 +270,13 @@ function spollers() {
     };
     var initSpollers = initSpollers2, initSpollerBody = initSpollerBody2, setSpollerAction = setSpollerAction2, hideSpollersBody = hideSpollersBody2;
     document.addEventListener("click", setSpollerAction2);
-    var spollersRegular = Array.from(spollersArray).filter(function(item, index, self) {
+    const spollersRegular = Array.from(spollersArray).filter(function(item, index, self) {
       return !item.dataset.spollers.split(",")[0];
     });
     if (spollersRegular.length) {
       initSpollers2(spollersRegular);
     }
-    var mdQueriesArray = dataMediaQueries(spollersArray, "spollers");
+    let mdQueriesArray = dataMediaQueries(spollersArray, "spollers");
     if (mdQueriesArray && mdQueriesArray.length) {
       mdQueriesArray.forEach((mdQueriesItem) => {
         mdQueriesItem.matchMedia.addEventListener("change", function() {
@@ -310,34 +310,34 @@ function uniqArray(array) {
   });
 }
 function dataMediaQueries(array, dataSetValue) {
-  var media = Array.from(array).filter(function(item, index, self) {
+  const media = Array.from(array).filter(function(item, index, self) {
     if (item.dataset[dataSetValue]) {
       return item.dataset[dataSetValue].split(",")[0];
     }
   });
   if (media.length) {
-    var breakpointsArray = [];
+    const breakpointsArray = [];
     media.forEach((item) => {
-      var params = item.dataset[dataSetValue];
-      var breakpoint = {};
-      var paramsArray = params.split(",");
+      const params = item.dataset[dataSetValue];
+      const breakpoint = {};
+      const paramsArray = params.split(",");
       breakpoint.value = paramsArray[0];
       breakpoint.type = paramsArray[1] ? paramsArray[1].trim() : "max";
       breakpoint.item = item;
       breakpointsArray.push(breakpoint);
     });
-    var mdQueries = breakpointsArray.map(function(item) {
+    let mdQueries = breakpointsArray.map(function(item) {
       return "(" + item.type + "-width: " + item.value + "px)," + item.value + "," + item.type;
     });
     mdQueries = uniqArray(mdQueries);
-    var mdQueriesArray = [];
+    const mdQueriesArray = [];
     if (mdQueries.length) {
       mdQueries.forEach((breakpoint) => {
-        var paramsArray = breakpoint.split(",");
-        var mediaBreakpoint = paramsArray[1];
-        var mediaType = paramsArray[2];
-        var matchMedia = window.matchMedia(paramsArray[0]);
-        var itemsArray = breakpointsArray.filter(function(item) {
+        const paramsArray = breakpoint.split(",");
+        const mediaBreakpoint = paramsArray[1];
+        const mediaType = paramsArray[2];
+        const matchMedia = window.matchMedia(paramsArray[0]);
+        const itemsArray = breakpointsArray.filter(function(item) {
           if (item.value === mediaBreakpoint && item.type === mediaType) {
             return true;
           }
@@ -353,10 +353,9 @@ function dataMediaQueries(array, dataSetValue) {
 }
 class Popup {
   constructor(options) {
-    var config = {
+    let config = {
       logging: true,
       init: true,
-
       attributeOpenButton: "data-popup",
       attributeCloseButton: "data-close",
       fixElementSelector: "[data-lp]",
@@ -444,7 +443,7 @@ class Popup {
   }
   eventsPopup() {
     document.addEventListener("click", (function(e) {
-      var buttonOpen = e.target.closest(`[${this.options.attributeOpenButton}]`);
+      const buttonOpen = e.target.closest(`[${this.options.attributeOpenButton}]`);
       if (buttonOpen) {
         e.preventDefault();
         this._dataValue = buttonOpen.getAttribute(this.options.attributeOpenButton) ? buttonOpen.getAttribute(this.options.attributeOpenButton) : "error";
@@ -460,7 +459,7 @@ class Popup {
           this.popupLogging(`Йой, не заповнено атрибут у ${buttonOpen.classList}`);
         return;
       }
-      var buttonClose = e.target.closest(`[${this.options.attributeCloseButton}]`);
+      const buttonClose = e.target.closest(`[${this.options.attributeCloseButton}]`);
       if (buttonClose || !e.target.closest(`.${this.options.classes.popupContent}`) && this.isOpen) {
         e.preventDefault();
         this.close();
@@ -511,11 +510,11 @@ class Popup {
       this.targetOpen.element = document.querySelector(this.targetOpen.selector);
       if (this.targetOpen.element) {
         if (this.youTubeCode) {
-          var codeVideo = this.youTubeCode;
-          var urlVideo = `https://www.youtube.com/embed/${codeVideo}?rel=0&showinfo=0&autoplay=1`;
-          var iframe = document.createElement("iframe");
+          const codeVideo = this.youTubeCode;
+          const urlVideo = `https://www.youtube.com/embed/${codeVideo}?rel=0&showinfo=0&autoplay=1`;
+          const iframe = document.createElement("iframe");
           iframe.setAttribute("allowfullscreen", "");
-          var autoplay = this.options.setAutoplayYoutube ? "autoplay;" : "";
+          const autoplay = this.options.setAutoplayYoutube ? "autoplay;" : "";
           iframe.setAttribute("allow", `${autoplay}; encrypted-media`);
           iframe.setAttribute("src", urlVideo);
           if (!this.targetOpen.element.querySelector(`[${this.options.youtubePlaceAttribute}]`)) {
@@ -604,8 +603,8 @@ class Popup {
     }
   }
   _openToHash() {
-    var classInHash = document.querySelector(`.${window.location.hash.replace("#", "")}`) ? `.${window.location.hash.replace("#", "")}` : document.querySelector(`${window.location.hash}`) ? `${window.location.hash}` : null;
-    var buttons = document.querySelector(`[${this.options.attributeOpenButton} = "${classInHash}"]`) ? document.querySelector(`[${this.options.attributeOpenButton} = "${classInHash}"]`) : document.querySelector(`[${this.options.attributeOpenButton} = "${classInHash.replace(".", "#")}"]`);
+    let classInHash = document.querySelector(`.${window.location.hash.replace("#", "")}`) ? `.${window.location.hash.replace("#", "")}` : document.querySelector(`${window.location.hash}`) ? `${window.location.hash}` : null;
+    const buttons = document.querySelector(`[${this.options.attributeOpenButton} = "${classInHash}"]`) ? document.querySelector(`[${this.options.attributeOpenButton} = "${classInHash}"]`) : document.querySelector(`[${this.options.attributeOpenButton} = "${classInHash.replace(".", "#")}"]`);
     this.youTubeCode = buttons.getAttribute(this.options.youtubeAttribute) ? buttons.getAttribute(this.options.youtubeAttribute) : null;
     if (buttons && classInHash)
       this.open(classInHash);
@@ -617,9 +616,9 @@ class Popup {
     history.pushState("", "", window.location.href.split("#")[0]);
   }
   _focusCatch(e) {
-    var focusable = this.targetOpen.element.querySelectorAll(this._focusEl);
-    var focusArray = Array.prototype.slice.call(focusable);
-    var focusedIndex = focusArray.indexOf(document.activeElement);
+    const focusable = this.targetOpen.element.querySelectorAll(this._focusEl);
+    const focusArray = Array.prototype.slice.call(focusable);
+    const focusedIndex = focusArray.indexOf(document.activeElement);
     if (e.shiftKey && focusedIndex === 0) {
       focusArray[focusArray.length - 1].focus();
       e.preventDefault();
@@ -630,7 +629,7 @@ class Popup {
     }
   }
   _focusTrap() {
-    var focusable = this.previousOpen.element.querySelectorAll(this._focusEl);
+    const focusable = this.previousOpen.element.querySelectorAll(this._focusEl);
     if (!this.isOpen && this.lastFocusEl) {
       this.lastFocusEl.focus();
     } else {
@@ -651,9 +650,9 @@ class DynamicAdapt {
     this.daClassname = "_dynamic_adapt_";
     this.nodes = [...document.querySelectorAll("[data-da]")];
     this.nodes.forEach((node) => {
-      var data = node.dataset.da.trim();
-      var dataArray = data.split(",");
-      var оbject = {};
+      const data = node.dataset.da.trim();
+      const dataArray = data.split(",");
+      const оbject = {};
       оbject.element = node;
       оbject.parent = node.parentNode;
       оbject.destination = document.querySelector(`${dataArray[0].trim()}`);
@@ -665,16 +664,17 @@ class DynamicAdapt {
     this.arraySort(this.оbjects);
     this.mediaQueries = this.оbjects.map(({ breakpoint }) => `(${this.type}-width: ${breakpoint}px),${breakpoint}`).filter((item, index, self) => self.indexOf(item) === index);
     this.mediaQueries.forEach((media) => {
-      var mediaSplit = media.split(",");
-      var matchMedia = window.matchMedia(mediaSplit[0]);
-      var mediaBreakpoint = mediaSplit[1];
-      var оbjectsFilter = this.оbjects.filter(({ breakpoint }) => breakpoint === mediaBreakpoint);
+      const mediaSplit = media.split(",");
+      const matchMedia = window.matchMedia(mediaSplit[0]);
+      const mediaBreakpoint = mediaSplit[1];
+      const оbjectsFilter = this.оbjects.filter(({ breakpoint }) => breakpoint === mediaBreakpoint);
       matchMedia.addEventListener("change", () => {
         this.mediaHandler(matchMedia, оbjectsFilter);
       });
       this.mediaHandler(matchMedia, оbjectsFilter);
     });
   }
+  // Основна функція
   mediaHandler(matchMedia, оbjects) {
     if (matchMedia.matches) {
       оbjects.forEach((оbject) => {
@@ -688,6 +688,7 @@ class DynamicAdapt {
       });
     }
   }
+  // Функція переміщення
   moveTo(place, element, destination) {
     element.classList.add(this.daClassname);
     if (place === "last" || place >= destination.children.length) {
@@ -700,6 +701,7 @@ class DynamicAdapt {
     }
     destination.children[place].before(element);
   }
+  // Функція повернення
   moveBack(parent, element, index) {
     element.classList.remove(this.daClassname);
     if (parent.children[index] !== void 0) {
@@ -708,10 +710,13 @@ class DynamicAdapt {
       parent.append(element);
     }
   }
+  // Функція отримання індексу всередині батьківського єлементу
   indexInParent(parent, element) {
     return [...parent.children].indexOf(element);
   }
-
+  // Функція сортування масиву по breakpoint та place
+  // за зростанням для this.type = min
+  // за спаданням для this.type = max
   arraySort(arr) {
     if (this.type === "min") {
       arr.sort((a, b) => {
@@ -749,7 +754,7 @@ class DynamicAdapt {
     }
   }
 }
-var da = new DynamicAdapt("max");
+const da = new DynamicAdapt("max");
 da.init();
 var HOOKS = [
   "onChange",
@@ -3086,7 +3091,7 @@ flatpickr("#pickerID", {
 var stateForm = {};
 var popupState = "";
 function handleAriaHiddenChange(mutationsList, observer) {
-  for (var mutation of mutationsList) {
+  for (const mutation of mutationsList) {
     if (mutation.type === "attributes" && mutation.attributeName === "aria-hidden") {
       var isHidden = document.getElementById("popup").getAttribute("aria-hidden") === "true";
       popupState = isHidden;
@@ -3143,9 +3148,9 @@ function handleAriaHiddenChange(mutationsList, observer) {
   }
 }
 (function() {
-  var popupElement = document.getElementById("popup");
+  const popupElement = document.getElementById("popup");
   if (popupElement) {
-    var observer = new MutationObserver(handleAriaHiddenChange);
+    const observer = new MutationObserver(handleAriaHiddenChange);
     observer.observe(popupElement, { attributes: true });
   }
 })();
@@ -3163,7 +3168,7 @@ function handleAriaHiddenChange(mutationsList, observer) {
   function scrollHandler(e) {
     var count = 0;
     if (isElementInViewport(myBlock) && svichedScrol) {
-      var updateCount2 = function() {
+      let updateCount2 = function() {
         var formattedNumber = formatNumberWithComma(count);
         myBlockStep.innerHTML = formattedNumber;
         count += 353;
@@ -3365,7 +3370,7 @@ inputTo == null ? void 0 : inputTo.addEventListener("input", updateButtonState);
 });
 (function(element) {
   if (element && element.id !== "thank-you-page") {
-    var updateButtonClass2 = function() {
+    let updateButtonClass2 = function() {
       ThreeBtn.classList.remove("invalid-btn", "valid-btn");
       if (picker.value) {
         ThreeBtn.classList.add("valid-btn");
@@ -3404,19 +3409,19 @@ inputTo == null ? void 0 : inputTo.addEventListener("input", updateButtonState);
   }
 });
 function isValidEmail(email) {
-  var tester = /^[-!#$%&'*+\/0-9=?A-Z^_a-z`{|}~](\.?[-!#$%&'*+\/0-9=?A-Z^_a-z`{|}~])*@[a-zA-Z0-9](-*\.?[a-zA-Z0-9])*\.[a-zA-Z](-?[a-zA-Z0-9])+$/;
+  const tester = /^[-!#$%&'*+\/0-9=?A-Z^_a-z`{|}~](\.?[-!#$%&'*+\/0-9=?A-Z^_a-z`{|}~])*@[a-zA-Z0-9](-*\.?[a-zA-Z0-9])*\.[a-zA-Z](-?[a-zA-Z0-9])+$/;
   if (!email)
     return false;
-  var [account, address] = email.split("@");
+  const [account, address] = email.split("@");
   if (!account || !address)
     return false;
   if (account.length > 50 || address.length > 60)
     return false;
-  var domainParts = address.split(".");
-  var firstDomainPart = domainParts[0];
+  const domainParts = address.split(".");
+  const firstDomainPart = domainParts[0];
   if (firstDomainPart.length > 50)
     return false;
-  var secondDomainPart = domainParts[1];
+  const secondDomainPart = domainParts[1];
   if (secondDomainPart && secondDomainPart.length > 10)
     return false;
   return tester.test(email);
@@ -3473,7 +3478,7 @@ function handleClick() {
 btnFourth == null ? void 0 : btnFourth.addEventListener("click", handleClick);
 (function(element) {
   if (element && element.id !== "thank-you-page") {
-    var isValidName2 = function(name) {
+    let isValidName2 = function(name) {
       var nameRegex = /^[a-zA-Z]{3,19}$/u;
       return nameRegex.test(name);
     }, formatPhoneNumber2 = function(event) {
